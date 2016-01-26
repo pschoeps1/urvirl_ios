@@ -1,0 +1,5 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SSKeychain" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/TMReachability" "${PODS_ROOT}/Headers/Public/UICKeyChainStore" "${PODS_ROOT}/Headers/Public/UITextView+Placeholder" "${PODS_ROOT}/Headers/Public/ViewDeck"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SSKeychain" -isystem "${PODS_ROOT}/Headers/Public/SVProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/TMReachability" -isystem "${PODS_ROOT}/Headers/Public/UICKeyChainStore" -isystem "${PODS_ROOT}/Headers/Public/UITextView+Placeholder" -isystem "${PODS_ROOT}/Headers/Public/ViewDeck"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"SSKeychain" -l"SVProgressHUD" -l"TMReachability" -l"UICKeyChainStore" -l"UITextView+Placeholder" -l"ViewDeck" -framework "Foundation" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
+PODS_ROOT = ${SRCROOT}/Pods

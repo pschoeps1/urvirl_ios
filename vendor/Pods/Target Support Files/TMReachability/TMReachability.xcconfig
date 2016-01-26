@@ -1,0 +1,5 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/TMReachability" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SSKeychain" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/TMReachability" "${PODS_ROOT}/Headers/Public/UICKeyChainStore" "${PODS_ROOT}/Headers/Public/UITextView+Placeholder" "${PODS_ROOT}/Headers/Public/ViewDeck"
+OTHER_LDFLAGS = -framework "SystemConfiguration"
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES
