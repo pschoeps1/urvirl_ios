@@ -249,7 +249,7 @@ class AdminSettingsController < UIViewController
   end 
 
   def go_back
-    new_controller = ChatController.alloc.initWithNibName(nil, bundle: nil)
+    new_controller = GroupMenuController.alloc.initWithNibName(nil, bundle: nil)
     self.navigationController.pushViewController(new_controller, animated: false)
   end
 end

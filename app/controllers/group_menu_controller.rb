@@ -12,10 +12,24 @@ class GroupMenuController < UIViewController
     self.view.addSubview @table
     @table.dataSource = self
 
+    self.navigationItem.setHidesBackButton(true)
+    leftButton = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action: 'go_back')
+    self.navigationItem.leftBarButtonItem = leftButton
+
 
     #@table.separatorStyle = UITableViewCellSeparatorStyleNone
     self.view.backgroundColor = UIColor.whiteColor
     @table.backgroundColor = UIColor.whiteColor
+
+    #cutsom titles to change background colors of all buttons to white
+    titleView = UILabel.alloc.initWithFrame(CGRectZero)
+    titleView.backgroundColor = UIColor.clearColor
+    titleView.font = UIFont.boldSystemFontOfSize(20.0)
+    titleView.shadowColor = UIColor.colorWithWhite(0.0,alpha:0.5)
+    titleView.textColor = UIColor.whiteColor
+    self.navigationItem.titleView = titleView
+    titleView.text = "Group Menu"
+    titleView.sizeToFit
 
     #Need to set this dynamically to handle the first cell being larger then the rest
     @table.rowHeight = 30
@@ -79,5 +93,11 @@ class GroupMenuController < UIViewController
 
 
   end
+
+  def go_back
+    new_controller = ChatController.alloc.initWithNibName(nil, bundle: nil)
+    self.navigationController.pushViewController(new_controller, animated: false)
+  end
+
 
 end

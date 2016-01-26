@@ -9,7 +9,9 @@ class GroupEventsController < UITableViewController
     
     #leftButton = UIBarButtonItem.alloc.initWithTitle("Log Out",style:UIBarButtonItemStyleDone,target: self,action:'logout')
     #self.navigationItem.leftBarButtonItem = leftButton
-    self.navigationItem.setHidesBackButton(false)
+    self.navigationItem.setHidesBackButton(true)
+    leftButton = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action: 'go_back')
+    self.navigationItem.leftBarButtonItem = leftButton
 
     rightButton = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action: 'add_event')
     self.navigationItem.rightBarButtonItem = rightButton
@@ -113,6 +115,11 @@ class GroupEventsController < UITableViewController
     new_controller = GroupEventAddController.alloc.initWithNibName(nil, bundle: nil)
 
     self.navigationController.pushViewController(new_controller, animated: true)
+  end
+
+  def go_back
+    new_controller = GroupMenuController.alloc.initWithNibName(nil, bundle: nil)
+    self.navigationController.pushViewController(new_controller, animated: false)
   end
 
 
