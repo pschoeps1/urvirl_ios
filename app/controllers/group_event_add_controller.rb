@@ -4,14 +4,6 @@ class GroupEventAddController < UIViewController
     self.navigationController.navigationBar.hidden = false
     self.navigationController.navigationBar.tintColor = UIColor.whiteColor
 
-    self.view.frame.size.height = 1000
-
-    frame = UIScreen.mainScreen.bounds
-    origin = frame.origin
-    size = frame.size
-
-
-
     rightButton = UIBarButtonItem.alloc.initWithTitle("Cancel",style:UIBarButtonItemStyleDone,target: self,action:'resign_keyboard')
     self.navigationItem.rightBarButtonItem = rightButton
 
@@ -38,6 +30,12 @@ class GroupEventAddController < UIViewController
     StandardAppearance.set_named_fonts_and_colors
     rmq.stylesheet = MainStylesheet
     rmq(self.view).apply_style :root_view
+    
+    frame = UIScreen.mainScreen.bounds
+    size = frame.size
+    origin = frame.origin
+    #event_creation_form = UIView.alloc.initWithFrame([[origin.x, origin.y],
+     #                                            [size.width, 9000]])
 
     rmq.append(UIView, :event_creation_form).tap do |q|
       @event_name = q.append(UITextField, :event_name).get
@@ -61,6 +59,21 @@ class GroupEventAddController < UIViewController
    @user = NSUserDefaults.standardUserDefaults["id"]
    @name = MotionKeychain.get('name')
    @group = NSUserDefaults.standardUserDefaults["group-id"]
+
+    
+    #UITextView.alloc.initWithFrame([[origin.x, origin.y],
+          #                                       [size.width, 9000]])
+  event_creation_form = rmq(:event_creation_form).get
+
+    scroll_view = UIScrollView.alloc.initWithFrame(frame)
+    scroll_view.showsHorizontalScrollIndicator = true
+    scroll_view.showsVerticalScrollIndicator = true
+    scroll_view.scrollEnabled = true
+    scroll_view.addSubview(event_creation_form)
+    scroll_view.contentSize = event_creation_form.frame.size
+
+    self.view.addSubview(scroll_view)
+    #register_keyboard_events
 
   end
 
@@ -133,11 +146,7 @@ class GroupEventAddController < UIViewController
     keyboard_rect = keyboard_rect_ptr[0]
     y = keyboard_rect.size.height * -1
     up_position = CGRectOffset(self.view.frame, 0, y)
-    if self.view.frame.size.height == @table.frame.size.height + y
-      #do nothing
-    else
       UIView.animateWithDuration(duration,animations: lambda { self.view.setFrame(up_position) },completion: lambda {|finished| })
-    end 
   end
 
 

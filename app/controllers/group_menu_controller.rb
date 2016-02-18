@@ -13,7 +13,7 @@ class GroupMenuController < UIViewController
     @table.dataSource = self
 
     self.navigationItem.setHidesBackButton(true)
-    leftButton = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action: 'go_back')
+    leftButton = UIBarButtonItem.alloc.initWithTitle("Back",style:UIBarButtonItemStyleDone,target: self,action:'go_back')
     self.navigationItem.leftBarButtonItem = leftButton
 
 

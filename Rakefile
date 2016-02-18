@@ -18,7 +18,7 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'urvirl'
   app.icons = ['Icon.png', 'Icon-72@2x.png', 'Icon-72.png', 'Icon-Small-20.png', 'Icon-Small-20@2x.png','Icon-Small-30.png','Icon-Small-30@2x.png', 'Icon-Small-50.png','Icon-Small-50@2x.png','Icon-Small.png', 'Icon-Small@2x.png', 'Icon.png', 'Icon@2x.png', 'apple-touch-icon-120x120.png', 'apple-touch-icon-152x152.png', 'apple-touch-icon-76x76.png']
-  app.version = "1.0.14"
+  app.version = "1.0.26"
   app.identifier = 'com.youcompany.urvirl'
   #app.provisioning_profile = '/Users/mac/downloads/app_development.mobileprovision'
   #app.codesign_certificate = 'iPhone Developer: Patrick Schoes (N294G47R68)'
@@ -60,6 +60,7 @@ Motion::Project::App.setup do |app|
     pod 'UITextView+Placeholder'
     pod 'SSKeychain'
     pod 'ViewDeck', '~> 2.4'
+    pod 'JSQMessagesViewController'
   end
 end
 #task :"build:simulator" => :"schema:build"

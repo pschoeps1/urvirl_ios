@@ -10,7 +10,7 @@ class GroupEventsController < UITableViewController
     #leftButton = UIBarButtonItem.alloc.initWithTitle("Log Out",style:UIBarButtonItemStyleDone,target: self,action:'logout')
     #self.navigationItem.leftBarButtonItem = leftButton
     self.navigationItem.setHidesBackButton(true)
-    leftButton = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action: 'go_back')
+    leftButton = UIBarButtonItem.alloc.initWithTitle("Back",style:UIBarButtonItemStyleDone,target: self,action:'go_back')
     self.navigationItem.leftBarButtonItem = leftButton
 
     rightButton = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action: 'add_event')
@@ -68,6 +68,12 @@ class GroupEventsController < UITableViewController
         presentError e.message
       end
 
+      #json.sort! { |x, y| x["start_at"] <=> y["start_at"] }
+     #   @table.reloadData
+     #   scroll_bottom
+        
+     # }
+
       new_events = []
       json["events"].each do |dict|
         new_events << dict #Group.new(dict)
@@ -103,9 +109,11 @@ class GroupEventsController < UITableViewController
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
     UIApplication.sharedApplication.applicationIconBadgeNumber = 0
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    group_true = true
 
     new_controller = GroupEventViewController.alloc.initWithNibName(nil, bundle: nil)
     new_controller.event = @data[indexPath.row]
+    new_controller.group_true = group_true
 
     self.navigationController.pushViewController(new_controller, animated: true)
 

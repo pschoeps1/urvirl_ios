@@ -1,12 +1,16 @@
 PODS:
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - SSKeychain (1.3.1)
-  - SVProgressHUD (HEAD based on 2.0-beta2)
+  - SVProgressHUD (HEAD based on 2.0-beta8)
   - TMReachability (3.2)
   - UICKeyChainStore (2.1.0)
   - UITextView+Placeholder (1.1.0)
   - ViewDeck (2.4.1)
 
 DEPENDENCIES:
+  - JSQMessagesViewController
   - SSKeychain
   - SVProgressHUD (HEAD)
   - TMReachability (from `https://github.com/albertbori/Reachability`, commit `e34782b386307e386348b481c02c176d58ba45e6`)
@@ -25,8 +29,10 @@ CHECKOUT OPTIONS:
     :git: https://github.com/albertbori/Reachability
 
 SPEC CHECKSUMS:
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   SSKeychain: 04c4ec40f4c3deda524e269bc76e5f30e638a174
-  SVProgressHUD: 29ebaaa2574f11c0726421a77d41cb1bd190801e
+  SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
   TMReachability: 48c99d728a8b0ad4493800592484b8cbb65c896c
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UITextView+Placeholder: 672ce543356b5b5787f354415bc3b132d47f0362

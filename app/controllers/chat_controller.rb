@@ -1,4 +1,12 @@
 class ChatController < UIViewController
+
+
+#lets make messages look awesome!
+#obj c ex https://github.com/jessesquires/JSQMessagesViewController/tree/develop/JSQMessagesDemo
+#swift ex with firebase (awesome) https://github.com/firebase/ios-swift-chat-example/tree/master/FireChat-Swift
+#everything else http://www.jessesquires.com/introducing-jsqmessagesvc-6-0/
+
+
   attr_accessor :group, :blocked_users
   def viewDidLoad
     @data = NSMutableArray.alloc.init
@@ -117,12 +125,12 @@ class ChatController < UIViewController
         #scroll_bottom
       end
 
-      ref.query(order_by: 'timestamp', last: 100, on: :changed) do |snapshot| 
-      @data.addObject(snapshot.value)
+      #ref.query(order_by: 'timestamp', last: 100, on: :changed) do |snapshot| 
+      #@data.addObject(snapshot.value)
       #@data.sort! { |x, y| x["timestamp"] <=> y["timestamp"] }
        # @table.reloadData
         #scroll_bottom
-      end
+      #end
 
       ref.query(order_by: 'timestamp', last: 100, on: :value) do |snapshot| 
         @table.reloadData
@@ -191,6 +199,7 @@ class ChatController < UIViewController
 
   def resign_keyboard
     @text_field.resignFirstResponder
+    @text_field.setText("")
     true
   end
 
@@ -204,7 +213,7 @@ class ChatController < UIViewController
 
   def tableView(tableView, heightForRowAtIndexPath: indexPath)
     chatMessage = @data[indexPath.row]['message'].to_s
-    size = chatMessage.sizeWithFont(UIFont.systemFontOfSize(18), constrainedToSize:[260.0, 300.0], lineBreakMode:UILineBreakModeWordWrap)
+    size = chatMessage.sizeWithFont(UIFont.systemFontOfSize(20), constrainedToSize:[260.0, 99999.0], lineBreakMode:UILineBreakModeWordWrap) #, constrainedToSize:[260.0, 300.0],
     height = (22 + size.height) # 22 is the content margin
     height
   end
@@ -221,7 +230,7 @@ class ChatController < UIViewController
 
     if cell == nil
       cell ||= UITableViewCell.alloc.initWithStyle( UITableViewCellStyleSubtitle, reuseIdentifier:@reuseIdentifier)
-      cell.textLabel.font = UIFont.systemFontOfSize(18)
+      cell.textLabel.font = UIFont.systemFontOfSize(20)
       cell.textLabel.numberOfLines = 0
     end
 
