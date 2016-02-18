@@ -102,6 +102,13 @@ class MainStylesheet < ApplicationStylesheet
     st.text = 'Create Event'
   end
 
+  def event_edit_button(st)
+    fields st
+    standard_button st
+    st.frame = { top: 545 }
+    st.text = 'Edit Event'
+  end
+
   def group_destroy_button(st)
     fields st
     st.frame = { top: 420, height: 35, width: 260 }

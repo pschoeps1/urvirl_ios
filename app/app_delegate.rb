@@ -40,6 +40,11 @@ class AppDelegate
     application.registerForRemoteNotifications
   end 
 
+  def application(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
+    data = userInfo.objectForKey("data")
+    
+  end
+
 
 
   def application(application, didRegisterForRemoteNotificationsWithDeviceToken: device_token)  

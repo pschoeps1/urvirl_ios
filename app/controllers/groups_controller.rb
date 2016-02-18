@@ -153,7 +153,7 @@ class GroupsController < UITableViewController
     UIApplication.sharedApplication.applicationIconBadgeNumber = 0
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-    new_controller = ChatController.alloc.initWithNibName(nil, bundle: nil)
+    new_controller = ExperimentalChatController.alloc.initWithNibName(nil, bundle: nil)
     new_controller.blocked_users = @blocked_users
     save_group(@data[indexPath.row])
 

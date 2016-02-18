@@ -2,7 +2,7 @@ class RightViewController < UIViewController
   def viewDidLoad
     super
 
-    @labels = ["Find Groups", "Find Friends", "Contact Us", "Create Group", "Inbox", "Log Out"]
+    @labels = ["Find Groups", "Find Friends", "Contact Us", "Create Group", "My Events", "Inbox", "Log Out"]
 
     table_frame = [[0, 50],
                    [self.view.frame.size.width, self.view.bounds.size.height - 50]]
@@ -65,6 +65,8 @@ class RightViewController < UIViewController
                           FindGroupsController.alloc.initWithNibName(nil, bundle: nil)
                         when "Create Group"
                           CreateGroupController.alloc.initWithNibName(nil, bundle: nil)
+                        when "My Events"
+                          EventsController.alloc.initWithNibName(nil, bundle: nil)
                         when "Find Friends"
                           FindFriendsController.alloc.initWithNibName(nil, bundle: nil)
                         when "Inbox"
