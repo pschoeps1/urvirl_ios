@@ -12,8 +12,9 @@ class AuthenticationService
     #device_token = options.fetch :device_token
     password = options.fetch :password
     device_id = options.fetch :device_id
+    device_type = "APPLE"
 
-    @hash = { user: { email: email, password: password, device_id: device_id } }
+    @hash = { user: { email: email, password: password, device_id: device_id, device_type: device_type } }
   end
 
   def process
