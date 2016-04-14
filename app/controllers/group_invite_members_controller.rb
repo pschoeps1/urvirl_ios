@@ -33,6 +33,8 @@ class GroupInviteMembersController < UIViewController
     rmq.stylesheet = MainStylesheet
     rmq(self.view).apply_style :root_view
 
+    @members_instructions = rmq.append(UILabel, :members_instructions).get
+
     rmq.append(UIView, :group_invite_form).tap do |q|
       @group_invited = q.append(UITextView, :group_invited).get
       q.append(UIButton, :group_invite_button).on(:tap) do |_|
@@ -44,8 +46,8 @@ class GroupInviteMembersController < UIViewController
       end
     end
 
-    @group_invited.placeholder = "enter email addresses separated by comma"
-    @group_invited.placeholderColor = UIColor.lightGrayColor
+    #@group_invited.placeholder = "enter email addresses separated by comma"
+    #@group_invited.placeholderColor = UIColor.lightGrayColor
     @group_invited.layer.setBorderColor(UIColor.grayColor.CGColor)
     @group_invited.layer.setBorderWidth(1)
     @group_invited.layer.setCornerRadius(5)

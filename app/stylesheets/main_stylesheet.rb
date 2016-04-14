@@ -404,8 +404,15 @@ class MainStylesheet < ApplicationStylesheet
     st.frame = { centered: :horizontal }
   end
 
+  def members_instructions(st)
+    st.frame = {t: 0, w: 400, h: 200, l: 20 }
+    st.text = "Member emails, separated by comma"
+    st.view.font = font.medium
+    st.color = color.blue
+  end
+
   def group_invite_form(st)
-    st.frame = {t: 10, w: 250, h: 200 }
+    st.frame = {t: 120, w: 250, h: 200 }
     st.frame = {centered: :horizontal}
   end
 

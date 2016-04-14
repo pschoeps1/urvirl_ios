@@ -102,6 +102,7 @@ class InboxController < UIViewController
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
+
         BW::UIAlertView.new({
           buttons: ['Accept', 'Decline', 'Cancel'],
           cancel_button_index: 2
@@ -130,6 +131,7 @@ class InboxController < UIViewController
               end
             end
           end.show
+
 
   end
 

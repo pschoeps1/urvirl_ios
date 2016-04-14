@@ -166,7 +166,7 @@ class GroupEventAddController < UIViewController
   end 
 
   def go_back
-    new_controller = GroupEventsController.alloc.initWithStyle(UITableViewStylePlain)
+    new_controller = GroupEventsController.alloc.initWithNibName(nil, bundle: nil)
     self.navigationController.pushViewController(new_controller, animated: true)
   end
 

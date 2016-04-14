@@ -145,7 +145,6 @@ class FindFriendsController < UIViewController
       i = f['friend_id'].to_i
       friend_ids << i
     end
-
    
       if friend_ids.include? @data[indexPath.row]['id']
         App.alert("You are already friends, or the request is pending")
@@ -179,6 +178,7 @@ class FindFriendsController < UIViewController
             end
           end.show
       end
+
 
   end
 

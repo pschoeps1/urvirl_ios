@@ -54,5 +54,11 @@ class AuthenticationController < UIViewController
     new_controller = LoginController.alloc.initWithNibName(nil, bundle: nil)
     self.navigationController.pushViewController(new_controller, animated: true)
   end
+
+
+  def postHello
+    App.alert("hello")
+    #compile this too
+  end
 end
 

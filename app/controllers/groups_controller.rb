@@ -1,4 +1,5 @@
 class GroupsController < UITableViewController
+  attr_accessor :from_notification, :group_id
   def viewDidLoad
     super
 
@@ -76,6 +77,7 @@ class GroupsController < UITableViewController
               end
             end
           end.show
+
   end
 
   def contact
@@ -119,12 +121,17 @@ class GroupsController < UITableViewController
       end
       Dispatch::Queue.main.sync { load_groups(new_groups) }
       Dispatch::Queue.main.sync { load_blocked_users(blocked_users) }
+
     end
   end
 
   def load_groups(groups)
     @data = groups
     view.reloadData
+
+    if @group_id
+        navigate_to_group_from_notification
+    end
   end
 
   def load_blocked_users(users)
@@ -153,7 +160,7 @@ class GroupsController < UITableViewController
     UIApplication.sharedApplication.applicationIconBadgeNumber = 0
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-    new_controller = ExperimentalChatController.alloc.initWithNibName(nil, bundle: nil)
+    new_controller = ChatController.alloc.initWithNibName(nil, bundle: nil)
     new_controller.blocked_users = @blocked_users
     save_group(@data[indexPath.row])
 
@@ -177,9 +184,24 @@ class GroupsController < UITableViewController
     NSUserDefaults.standardUserDefaults["group-chat_id"] = group['chat_id']
     NSUserDefaults.standardUserDefaults["group-user_id"] = group['user_id']
     NSUserDefaults.standardUserDefaults["group-privacy"] = group['privacy']
+    NSUserDefaults.standardUserDefaults["group-color"] = group['group_color']
     NSUserDefaults.standardUserDefaults["group-member_can_edit"] = group['id']
     NSUserDefaults.standardUserDefaults["group-description"] = group['description']
   end
+
+  def navigate_to_group_from_notification
+    group_id = @group_id
+    @data.each do |g|
+      if g["id"].to_i == group_id.to_i
+        new_controller = ChatController.alloc.initWithNibName(nil, bundle: nil)
+        new_controller.blocked_users = @blocked_users
+        save_group(g)
+        self.navigationController.pushViewController(new_controller, animated: true)
+      end
+    end
+  end
+
+
 
 
 end

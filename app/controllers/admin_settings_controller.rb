@@ -176,7 +176,9 @@ class AdminSettingsController < UIViewController
       App.alert("Invites sent.")
   end
 
+
   def destroy_group_confirmation
+
     BW::UIAlertView.new({
       buttons: ['Destroy Group', 'Cancel'],
       cancel_button_index: 1
@@ -187,6 +189,7 @@ class AdminSettingsController < UIViewController
           destroy_group
         end
       end.show
+
   end
 
   def destroy_group

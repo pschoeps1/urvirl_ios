@@ -1,5 +1,6 @@
 class ContactController < UIViewController
   def viewDidLoad
+
     super
 	titleView = UILabel.alloc.initWithFrame(CGRectZero)
     titleView.backgroundColor = UIColor.clearColor

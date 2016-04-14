@@ -12,8 +12,9 @@ class SignupService
     password_confirmation = options.fetch :password_confirmation
     name = options.fetch :name
     device_id = options.fetch :device_id
+    device_type = "APPLE"
 
-    @hash = { user: { email: email, password: password, password_confirmation: password_confirmation, username: name, device_id: device_id } }
+    @hash = { user: { email: email, password: password, password_confirmation: password_confirmation, username: name, device_id: device_id, device_type: device_type } }
   end
 
   def process

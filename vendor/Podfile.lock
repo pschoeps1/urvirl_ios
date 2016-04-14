@@ -1,21 +1,42 @@
 PODS:
+  - AWSAutoScaling (2.3.6):
+    - AWSCore (= 2.3.6)
+  - AWSCognito (2.3.6):
+    - AWSCore (= 2.3.6)
+  - AWSCore (2.3.6)
+  - AWSS3 (2.3.6):
+    - AWSCore (= 2.3.6)
+  - DACircularProgress (2.3.1)
+  - IDMPhotoBrowser (1.8.2):
+    - DACircularProgress
+    - pop
+    - SDWebImage
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - SSKeychain (1.3.1)
-  - SVProgressHUD (HEAD based on 2.0-beta8)
+  - PDTSimpleCalendar (0.9.1)
+  - pop (1.0.9)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SSKeychain (1.4.0)
+  - SVProgressHUD (HEAD based on 2.0.3)
   - TMReachability (3.2)
   - UICKeyChainStore (2.1.0)
-  - UITextView+Placeholder (1.1.0)
-  - ViewDeck (2.4.1)
+  - ViewDeck (2.4.2)
 
 DEPENDENCIES:
+  - AWSAutoScaling
+  - AWSCognito
+  - AWSCore
+  - AWSS3
+  - IDMPhotoBrowser
   - JSQMessagesViewController
+  - PDTSimpleCalendar (~> 0.9.1)
   - SSKeychain
   - SVProgressHUD (HEAD)
   - TMReachability (from `https://github.com/albertbori/Reachability`, commit `e34782b386307e386348b481c02c176d58ba45e6`)
   - UICKeyChainStore
-  - UITextView+Placeholder
   - ViewDeck (~> 2.4)
 
 EXTERNAL SOURCES:
@@ -29,13 +50,21 @@ CHECKOUT OPTIONS:
     :git: https://github.com/albertbori/Reachability
 
 SPEC CHECKSUMS:
+  AWSAutoScaling: 49d9f49984a82852511be4caa2a510f522cd8de1
+  AWSCognito: af54fe65171c7c994c134e5d29b1ee60ee234825
+  AWSCore: 917d84b32974136194a905b98c0ae25c9f3350b8
+  AWSS3: 1caaf6b45100503fecf3d418c394519a89409a74
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  IDMPhotoBrowser: 52ac15203a73da002a7501ac7c6651a4cd761b4e
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  SSKeychain: 04c4ec40f4c3deda524e269bc76e5f30e638a174
-  SVProgressHUD: 6e48a1dda09ce3b58adc41d013baed3a8e8980ff
+  PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   TMReachability: 48c99d728a8b0ad4493800592484b8cbb65c896c
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
-  UITextView+Placeholder: 672ce543356b5b5787f354415bc3b132d47f0362
-  ViewDeck: e4c744cb5383cbae40cf286c6e7246df33962020
+  ViewDeck: 0b7b83bc2782a20dfb76207d0a2e8c5e6a6d182d
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.37.2

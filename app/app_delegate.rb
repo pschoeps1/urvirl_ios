@@ -10,6 +10,15 @@ class AppDelegate
     #@window.rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
     #@window.makeKeyAndVisible
 
+
+    #AWS Set up
+    credentialsProvider = AWSCognitoCredentialsProvider.alloc.initWithRegionType(AWSRegionUSEast1, identityPoolId: "us-east-1:93025ea4-adea-4e96-9a1b-6e01cd7e34ad")
+    configuration = AWSServiceConfiguration.alloc.initWithRegion(AWSRegionUSEast1, credentialsProvider: credentialsProvider)
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration
+
+
+
+
     chat_controller = ChatController.alloc.initWithNibName(nil, bundle: nil)
     contact_controller = ContactController.alloc.initWithNibName(nil, bundle: nil)
 
@@ -52,6 +61,7 @@ class AppDelegate
     # The token first needs to be converted to a string before saving
     string = token_to_string(device_token)
     MotionKeychain.set('device_id', string)
+    #a bunch of new stuff yayyyy
   end
 
   def token_to_string(device_token)  
@@ -59,6 +69,14 @@ class AppDelegate
   end 
 
   def application(application, didFailToRegisterForRemoteNotificationsWithError: error)  
-    NSLog("%@", error.localizedDescription)
+    #failed to register
   end  
+
+  def application(application, didReceiveRemoteNotification: userInfo)
+    group_id = userInfo['group_id']
+    navController = self.window.rootViewController
+    new_controller = GroupsController.alloc.initWithNibName(nil, bundle: nil)
+    new_controller.group_id = group_id
+    navController.centerController.pushViewController(new_controller, animated: false)
+  end
 end

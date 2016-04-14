@@ -56,6 +56,7 @@ class UserSettingsController < UIViewController
   end
 
   def leave_group_confirmation
+
     BW::UIAlertView.new({
       buttons: ['Leave Group', 'Cancel'],
       cancel_button_index: 1
@@ -66,6 +67,7 @@ class UserSettingsController < UIViewController
           leave_group
         end
       end.show
+
   end
 
   def leave_group

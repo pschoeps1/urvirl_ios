@@ -79,7 +79,8 @@ class GroupMenuController < UIViewController
                             UserSettingsController.alloc.initWithNibName(nil, bundle: nil)
                           end
                         when "Events"
-                          GroupEventsController.alloc.initWithStyle(UITableViewStylePlain)
+                          #GroupEventsController.alloc.initWithStyle(UITableViewStylePlain)
+                          GroupEventsController.alloc.initWithNibName(nil, bundle: nil)
                         end
 
     #puts new_controller

@@ -7,5 +7,4 @@ class Message
     @name = dict['name']
   end
 
-  puts @message
 end

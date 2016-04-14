@@ -156,6 +156,7 @@ class GroupInviteFriendsController < UIViewController
             end
           end.show
       else
+
         BW::UIAlertView.new({
           buttons: ['Add to group', 'Cancel'],
           cancel_button_index: 1
@@ -185,6 +186,7 @@ class GroupInviteFriendsController < UIViewController
               @table.reloadData
             end
           end.show
+
       end
 
   end

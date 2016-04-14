@@ -24,6 +24,8 @@ class GroupEventViewController < UIViewController
     @table.delegate = @table.dataSource = self
     self.view.addSubview @table
     @table.dataSource = self
+    #set footer height to zero in order to eliminate empty rows at the end of a table
+    @table.tableFooterView = UIView.alloc.initWithFrame(CGRectZero)
 
     self.navigationItem.setHidesBackButton(true)
     leftButton = UIBarButtonItem.alloc.initWithTitle("Back",style:UIBarButtonItemStyleDone,target: self,action:'go_back')
@@ -39,6 +41,29 @@ class GroupEventViewController < UIViewController
 
     #Need to set this dynamically to handle the first cell being larger then the rest
     #@table.rowHeight = 30
+
+    start_at = @event['start_at']
+    end_at = @event['end_at']
+    truncated_start_at = start_at[0...-6]
+    truncated_end_at = end_at[0...-6] if @event['end_at']
+
+
+
+    outputFormatter = NSDateFormatter.alloc.init 
+    outputFormatter.setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+    start_at_date = outputFormatter.dateFromString(truncated_start_at)
+    end_at_date = outputFormatter.dateFromString(truncated_end_at)
+
+    outputFormatter.setDateFormat("yyyy-MM-dd")
+    @start_at_string = outputFormatter.stringFromDate(start_at_date)
+    @end_at_string = outputFormatter.stringFromDate(end_at_date)
+
+    outputFormatter.setDateFormat("h:mm a")
+    @start_at_time = outputFormatter.stringFromDate(start_at_date)
+    @end_at_time = outputFormatter.stringFromDate(end_at_date)
+ 
+
+    #outputFormatter.release
   end
 
   def internet_connected?
@@ -57,7 +82,7 @@ class GroupEventViewController < UIViewController
       height = (22 + size.height) # 22 is the content margin
       height
     else
-        30
+        50
     end
   end
 
@@ -71,14 +96,17 @@ class GroupEventViewController < UIViewController
       cell.textLabel.numberOfLines = 0
     end
 
+    
+
+
     cell.textLabel.text  = case @labels[indexPath.row]
                         when "Name"
                           "Name: " + @event['name']
                         when "Start"
-                          "Start: " + @event['start_at']
+                          "Start: "  + @start_at_string + ", " + @start_at_time
                         when "End"
                             if @event['end_at'] != nil
-                              "End: " + @event['end_at']
+                                "End: " + @end_at_string + ", " + @end_at_time
                             else
                                 "End: no end date"
                             end
@@ -123,6 +151,7 @@ class GroupEventViewController < UIViewController
   end
 
   def delete_event
+
     BW::UIAlertView.new({
       buttons: ['Destroy Event', 'Cancel'],
       cancel_button_index: 1
@@ -137,6 +166,7 @@ class GroupEventViewController < UIViewController
           GroupEventDestroyService.new(self, { auth_token: auth_token, group_id: group_id, event_id: event_id }).process
         end
       end.show
+
   end
 
   def handle_eventdestroy_failed
